@@ -1,1 +1,1 @@
-web: gunicorn <ecardsapi>.wsgi
+web: gunicorn ecardsapi.wsgi
