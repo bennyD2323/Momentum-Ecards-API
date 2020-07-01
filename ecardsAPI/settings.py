@@ -142,10 +142,10 @@ INTERNAL_IPS = [
     '127.0.0.1',
     # ...
 ]
-# why didn't rest_framework.permissions.IsAuthenticatedOrReadOnly work?
+
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES':[
-        'rest_framework.permissions.IsAuthenicated'
+        'rest_framework.permissions.IsAuthenticated',
     ],
 
     'DEFAULT_AUTHENTICATION_CLASSES':[

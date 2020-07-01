@@ -4,7 +4,7 @@ from django.contrib.auth.models import AbstractUser
 from django.conf import settings
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-
+from users.models import User
 from rest_framework.authtoken.models import Token
 
 from django.db.models import Q
@@ -18,8 +18,7 @@ from django.db.models import Q
 #     if created:
 #         Token.objects.create(user=instance)
 
-class User(AbstractUser):
-    pass
+
 
 class Card(models.Model):
     user = models.ForeignKey(to=User, on_delete=models.CASCADE, related_name="cards", null=True, blank=True),
