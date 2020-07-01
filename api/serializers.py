@@ -10,6 +10,7 @@ class CardSerializer(serializers.ModelSerializer):
         fields = [
             'id',
             'url',
+            'user',
             'color',
             'border_style',
             'font',

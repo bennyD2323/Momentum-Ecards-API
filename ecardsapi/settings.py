@@ -44,12 +44,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'djoser',
-    'rest_framework.authtoken',
+    
 
     # Third-party
     'debug_toolbar',
     'django_extensions',
     'rest_framework',
+    'rest_framework.authtoken',
 
     # Project-specific
     'users',

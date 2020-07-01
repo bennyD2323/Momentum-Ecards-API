@@ -13,10 +13,10 @@ from django.db.models import Q
 
 
 
-# @receiver(post_save, sender=settings.AUTH_USER_MODEL)
-# def create_auth_token(sender, instance=None, created=False, **kwargs):
-#     if created:
-#         Token.objects.create(user=instance)
+@receiver(post_save, sender=settings.AUTH_USER_MODEL)
+def create_auth_token(sender, instance=None, created=False, **kwargs):
+    if created:
+        Token.objects.create(user=instance)
 
 
 
@@ -29,3 +29,5 @@ class Card(models.Model):
     # favorited_by = models.ManyToManyField(to=User, related_name="favorite_cards")
     card_name = models.CharField(max_length=50, null=True, blank=True),
     card_text = models.CharField(max_length=250, null=True, blank=True),
+
+    
