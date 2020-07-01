@@ -3,7 +3,11 @@ from rest_framework import viewsets, permissions
 from rest_framework.permissions import IsAuthenticated
 from users.models import User
 from api.models import Card
-from api.serializers import CardSerializer
+from api.serializers import CardSerializer, UserSerializer
+
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
 
 class CardViewSet(viewsets.ModelViewSet):
     queryset = Card.objects.all()
