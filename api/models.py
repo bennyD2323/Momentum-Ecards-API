@@ -21,7 +21,7 @@ def create_auth_token(sender, instance=None, created=False, **kwargs):
 
 
 class Card(models.Model):
-    user = models.ForeignKey(to=User, on_delete=models.CASCADE, related_name="cards", null=True, blank=True),
+    user = models.ForeignKey(to=User, on_delete=models.CASCADE, related_name="cards", null=True, blank=True)
 
     color = models.CharField(max_length=20, null=True, blank=True)
     font = models.CharField(max_length=20, null=True, blank=True)
