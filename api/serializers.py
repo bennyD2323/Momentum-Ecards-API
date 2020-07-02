@@ -8,11 +8,12 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = [
             'id',
-            'username'
+            'username',
+            'is_staff',
         ]
 
 class CardSerializer(serializers.ModelSerializer):
-    # user = serializers.StringRelatedField()
+    user = serializers.StringRelatedField()
     class Meta:
         model = Card
         fields = [
