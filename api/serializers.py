@@ -4,12 +4,14 @@ from api.models import Card
 
 
 class UserSerializer(serializers.ModelSerializer):
+
     class Meta:
         model = User
         fields = [
             'id',
             'username',
             'is_staff',
+            'following',
         ]
 
 class CardSerializer(serializers.ModelSerializer):

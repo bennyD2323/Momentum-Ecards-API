@@ -29,7 +29,7 @@ urlpatterns = [
     path('api/', include(router.urls)),
     path('api/auth/', include('djoser.urls.authtoken')),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    path('api/user_cards/<str:username>/', api_views.UserCardsView.as_view(),name='api_user_recipes'),
+    path('api/user_cards/<str:username>/', api_views.UserCardsView.as_view(),name='api_user_cards'),
 ]
 
 if settings.DEBUG:
