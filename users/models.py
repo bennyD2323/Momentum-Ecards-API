@@ -6,4 +6,4 @@ from django.contrib.auth.models import AbstractUser
 
 
 class User(AbstractUser):
-    followed_user = models.ManyToManyField("self", related_name="followed_users", blank=True)
+    followed_users = models.ManyToManyField("self", related_name="users", blank=True)
