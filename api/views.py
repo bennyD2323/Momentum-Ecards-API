@@ -40,11 +40,13 @@ class UserCardsView(views.APIView):
         serializer = CardSerializer(user.cards.all(), many=True, context={'request': request})
         return Response(serializer.data)
 
-# class Following(views.APIView):
-#     """
-#     Shows all users that the logged in user is following
-#     """
-#     queryset = User.followed_users.all()
-#     def delete(self, request, -, format=None)
-#         user = get_object_or_404(User,)
+class FollowingView(views.APIView):
+    """
+    Shows all users that the logged in user is following
+    """
+    
+    def get(self, request, format=None):
+        user = request.user
+        serializer = UserSerializer(user.followed_users.all(), many=True, context={'request': request})
+        return Response(serializer.data) 
 
