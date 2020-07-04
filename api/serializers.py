@@ -13,6 +13,8 @@ class UserSerializer(serializers.ModelSerializer):
             'email',
             'is_staff',
             'following',
+            'first_name',
+            'last_name',
         ]
 
 
