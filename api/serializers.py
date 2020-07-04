@@ -4,7 +4,7 @@ from api.models import Card
 
 
 class UserSerializer(serializers.ModelSerializer):
-
+    # followed_users = serializers.StringRelatedField()
     class Meta:
         model = User
         fields = [
@@ -12,7 +12,7 @@ class UserSerializer(serializers.ModelSerializer):
             'username',
             'email',
             'is_staff',
-            'following',
+            'followed_users',
             'first_name',
             'last_name',
         ]

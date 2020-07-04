@@ -13,7 +13,7 @@ class UserViewSet(viewsets.ModelViewSet):
 
     #  @action(detail=False, methods=['GET'], permission_classes=[permissions.IsAuthenticated])
     # def followed_users(self, request):
-    #     cards = request.user.cards.all()
+    #     followed_users = request.user.followed_users.all()
     #     serializer = CardSerializer(cards, many=True, context={'request': request})
     #     return Response(serializer.data)
 
@@ -40,4 +40,11 @@ class UserCardsView(views.APIView):
         serializer = CardSerializer(user.cards.all(), many=True, context={'request': request})
         return Response(serializer.data)
 
-    
+# class Following(views.APIView):
+#     """
+#     Shows all users that the logged in user is following
+#     """
+#     queryset = User.followed_users.all()
+#     def delete(self, request, -, format=None)
+#         user = get_object_or_404(User,)
+
