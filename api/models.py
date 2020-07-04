@@ -28,5 +28,5 @@ class Card(models.Model):
     border_style = models.CharField(max_length=20, null=True, blank=True)
     # favorited_by = models.ManyToManyField(to=User, related_name="favorite_cards")
     card_name = models.CharField(max_length=50, null=True, blank=True)
-    card_text = models.CharField(max_length=250, null=True, blank=True)
+    card_text = models.CharField(max_length=1000, null=True, blank=True)
 
