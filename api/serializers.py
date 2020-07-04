@@ -10,9 +10,11 @@ class UserSerializer(serializers.ModelSerializer):
         fields = [
             'id',
             'username',
+            'email',
             'is_staff',
             'following',
         ]
+
 
 class CardSerializer(serializers.ModelSerializer):
     user = serializers.StringRelatedField()

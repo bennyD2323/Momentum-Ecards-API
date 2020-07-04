@@ -11,6 +11,13 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
+    #  @action(detail=False, methods=['GET'], permission_classes=[permissions.IsAuthenticated])
+    # def followed_users(self, request):
+    #     cards = request.user.cards.all()
+    #     serializer = CardSerializer(cards, many=True, context={'request': request})
+    #     return Response(serializer.data)
+
+
 class CardViewSet(viewsets.ModelViewSet):
     queryset = Card.objects.all()
     serializer_class = CardSerializer
@@ -32,3 +39,5 @@ class UserCardsView(views.APIView):
         user = get_object_or_404(User, username=username)
         serializer = CardSerializer(user.cards.all(), many=True, context={'request': request})
         return Response(serializer.data)
+
+    
