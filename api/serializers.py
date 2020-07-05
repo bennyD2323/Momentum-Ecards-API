@@ -32,3 +32,13 @@ class CardSerializer(serializers.ModelSerializer):
             'card_name',
             'card_text',
         ]
+
+class Followed_UserSerializer(serializers.ModelSerializer):
+    
+    model = User
+    fields = [
+        'id',
+        'user',
+        'followed_users',
+
+    ]
