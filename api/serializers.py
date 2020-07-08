@@ -19,8 +19,8 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = [
-            'id',
             'username',
+            'id',
             'first_name',
             'last_name',
             'email',
@@ -34,9 +34,9 @@ class CardSerializer(serializers.ModelSerializer):
     class Meta:
         model = Card
         fields = [
+            'user',
             'id',
             'url',
-            'user',
             'color',
             'border_style',
             'font',

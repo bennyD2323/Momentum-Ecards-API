@@ -11,22 +11,30 @@ from django.db.models import Q
 
 
 
-
-
 @receiver(post_save, sender=settings.AUTH_USER_MODEL)
 def create_auth_token(sender, instance=None, created=False, **kwargs):
     if created:
         Token.objects.create(user=instance)
 
-
-
 class Card(models.Model):
     user = models.ForeignKey(to=User, on_delete=models.CASCADE, related_name="cards", null=True, blank=True)
-
-    color = models.CharField(max_length=20, null=True, blank=True)
-    font = models.CharField(max_length=20, null=True, blank=True)
+    # color = models.CharField(max_length=20, null=True, blank=True)
+    # font = models.CharField(max_length=20, null=True, blank=True)
     border_style = models.CharField(max_length=20, null=True, blank=True)
     # favorited_by = models.ManyToManyField(to=User, related_name="favorite_cards")
     card_name = models.CharField(max_length=50, null=True, blank=True)
     card_text = models.CharField(max_length=1000, null=True, blank=True)
 
+    COLOR_CHOICES = (
+        ('green', 'green'),
+        ('yellow', 'yellow'),
+        ('pink', 'pink'),
+    )  
+    color = models.CharField(max_length=50, choices=COLOR_CHOICES, default='green')
+
+    FONT_CHOICES = (  
+        ('montserratSubrayada', 'montserratSubrayada'),
+        ('greatVibes', 'greatVibes'),
+        ('bebasNeue', 'bebasNeue'),
+    )
+    font = models.CharField(max_length=50, choices=FONT_CHOICES, default='montserratSubrayada')   
