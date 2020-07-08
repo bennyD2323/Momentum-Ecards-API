@@ -30,11 +30,11 @@ class Card(models.Model):
         ('yellow', 'yellow'),
         ('pink', 'pink'),
     )  
-    color = models.CharField(max_length=50, choices=COLOR_CHOICES, default='green')
+    color = models.CharField(max_length=50, choices=COLOR_CHOICES, null=True, blank=True)
 
     FONT_CHOICES = (  
         ('montserratSubrayada', 'montserratSubrayada'),
         ('greatVibes', 'greatVibes'),
         ('bebasNeue', 'bebasNeue'),
     )
-    font = models.CharField(max_length=50, choices=FONT_CHOICES, default='montserratSubrayada')   
+    font = models.CharField(max_length=50, choices=FONT_CHOICES, null=True, blank=True)   
