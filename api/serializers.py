@@ -3,8 +3,19 @@ from users.models import User
 from api.models import Card
 
 
+
+class Followed_UserSerializer(serializers.ModelSerializer):
+    
+    model = User
+    fields = [
+        'id',
+        'user',
+        'followed_users',
+
+    ]
+
 class UserSerializer(serializers.ModelSerializer):
-    # followed_users = serializers.StringRelatedField()
+    # followed_users = serializers.Followed_UserSerializer(many=True)
     class Meta:
         model = User
         fields = [
@@ -33,12 +44,3 @@ class CardSerializer(serializers.ModelSerializer):
             'card_text',
         ]
 
-class Followed_UserSerializer(serializers.ModelSerializer):
-    
-    model = User
-    fields = [
-        'id',
-        'user',
-        'followed_users',
-
-    ]
