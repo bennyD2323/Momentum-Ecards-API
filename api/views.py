@@ -26,7 +26,7 @@ class UserViewSet(viewsets.ReadOnlyModelViewSet):
 
 class CardViewSet(viewsets.ModelViewSet):
     """
-    Viewset representing the Card model.
+    Viewset representing the Card model. This viewset has default methods for GET, POST, PUT, DELETE. The queryset for these is limited to cards that belong to the logged-in User, in order to prevent editing and deletion of cards that do not belong to the Logged-in User.
     """
     # queryset = Card.objects.all()
     serializer_class = CardSerializer
@@ -47,6 +47,9 @@ class CardViewSet(viewsets.ModelViewSet):
 
     @action(detail=False, methods=['GET'])
     def all(self, request):
+        """
+        With a GET request, this will return all cards owned by all users.
+        """
         cards= Card.objects.all()
         page= self.paginate_queryset(cards)
         if page is not None:
@@ -65,9 +68,10 @@ class CardViewSet(viewsets.ModelViewSet):
         return Response(serializer.data)
 
     @action(detail=False, methods=['GET'])
-    # """
-    # """
     def follower_cards(self, request):
+        """
+        Returns a list of cards belonging to users whom the Logged-in User follows.
+        """
         cards = Card.objects.filter(user__users=request.user)
         page = self.paginate_queryset(cards)
         if page is not None:
@@ -76,20 +80,7 @@ class CardViewSet(viewsets.ModelViewSet):
         serializer = CardSerializer(cards, many=True, context={'request': request})
         return Response(serializer.data)
 
-    
-# class CardDetailView(views.APIView):
-# queryset = Card.objects.all()
-# # ADD PERMISSIONS
-#     def get(self, request, id):
-#         """
-#         GET request to /cards/<cardID#> should give you the card with that ID
-#         """
-#         card = get_object_or_404(Card, id=card.id)
-#         return Response()
-
-
 class UserCardsView(views.APIView):
-    # ADD PERMISSIONS
     """
     GET request to api/user_cards/<username>/ will return all of the user's cards
     """
@@ -101,13 +92,13 @@ class UserCardsView(views.APIView):
         return Response(serializer.data)
 
 class FollowingView(views.APIView):
-    # ADD PERMISSIONS
-    """
-    Shows all users that the logged-in user is following
-    """
+   
     permission_classes = [permissions.IsAuthenticated]
 
     def get(self, request, format=None):
+        """
+        Returns all users that the logged-in user is following
+        """
         user = request.user
         serializer = UserSerializer(user.followed_users.all(), many=True, context={'request': request})
         return Response(serializer.data) 
@@ -122,8 +113,6 @@ class FollowingView(views.APIView):
         return Response({"user": username}, status=201) 
 
 class RemoveFollowView(views.APIView):
-    # """
-    # """
     permission_classes = [permissions.IsAuthenticated]
 
     def delete(self, request, username, format=None):
