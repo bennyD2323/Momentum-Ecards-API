@@ -33,6 +33,11 @@ class Card(models.Model):
         )
     font = models.CharField(max_length=50, choices=FONT_CHOICES, null=True, blank=True) 
 
-    border_style = models.CharField(max_length=20, null=True, blank=True)
+    BORDER_CHOICES = (  
+            ('solid', 'solid'),
+            ('double', 'double'),
+            ('dotted', 'dotted'),
+        )
+    border_style = models.CharField(max_length=50, choices=BORDER_CHOICES, null=True, blank=True) 
     card_name = models.CharField(max_length=50, null=True, blank=True)
     card_text = models.CharField(max_length=1000, null=True, blank=True)  
