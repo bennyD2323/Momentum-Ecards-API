@@ -26,6 +26,8 @@ class Card(models.Model):
         ('green', 'green'),
         ('yellow', 'yellow'),
         ('pink', 'pink'),
+        ('blue', 'blue'),
+        ('purple', 'purple'),
     )  
     color = models.CharField(max_length=50, choices=COLOR_CHOICES, null=True, blank=True)
 
